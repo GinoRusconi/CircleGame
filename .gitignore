@@ -1,0 +1,24 @@
+# Archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos y carpetas generados por Godot
+.import/
+.godot/
+*.tmp
+*.converted.res
+*.converted.scn
+*.uid
+*.gid
+*.import
+
+# Configuración local del editor (opcional)
+.editor/
+
+# Configuración de exportación (opcional, pero útil si trabajas en equipo)
+export_presets.cfg
+
+# Archivos de plataforma específica
+/android/.gradle/
+/android/.cxx/
