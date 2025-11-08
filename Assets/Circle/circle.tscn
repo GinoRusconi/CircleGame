@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://snq0geweycfg"]
+
+[ext_resource type="Script" uid="uid://cacwi3qloe1ej" path="res://Assets/Circle/circle.gd" id="1_5jcbc"]
+[ext_resource type="Texture2D" uid="uid://cg4y4re7tsn86" path="res://Assets/Circle/Circle.png" id="2_k5mxj"]
+
+[node name="Circle" type="Node2D"]
+script = ExtResource("1_5jcbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_k5mxj")
+
+[node name="PositionHeart" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="PositionHeart"]
+position = Vector2(30, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="PositionHeart"]
+position = Vector2(18, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="PositionHeart"]
+position = Vector2(-20, 0)
+
+[node name="Marker2D4" type="Marker2D" parent="PositionHeart"]
+position = Vector2(-31, 0)
+
+[node name="Center" type="Marker2D" parent="PositionHeart"]
+
+[node name="Marker2D5" type="Marker2D" parent="PositionHeart"]
+position = Vector2(0, -31)
+
+[node name="Marker2D6" type="Marker2D" parent="PositionHeart"]
+position = Vector2(0, -20)
+
+[node name="Marker2D7" type="Marker2D" parent="PositionHeart"]
+position = Vector2(0, 17)
+
+[node name="Marker2D8" type="Marker2D" parent="PositionHeart"]
+position = Vector2(0, 30)
