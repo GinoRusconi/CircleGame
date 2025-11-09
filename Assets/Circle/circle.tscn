@@ -36,3 +36,5 @@ position = Vector2(0, 17)
 
 [node name="Marker2D8" type="Marker2D" parent="PositionHeart"]
 position = Vector2(0, 30)
+
+[node name="Line2D" type="Line2D" parent="."]
