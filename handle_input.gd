@@ -5,7 +5,7 @@ var results: Array = []
 
 func _process(delta: float) -> void:
 	dir = Input.get_vector("left","right","down","up")
-	#print(round(sin(dir.angle()) * 10) / 10.0)
+	if dir == Vector2.ZERO : dir = Vector2(1,0)
 	
 	if Input.is_action_just_pressed("sin"):sin_button()
 	if Input.is_action_just_pressed("cos"):cos_button()

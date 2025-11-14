@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://d12k1kwiwlrp6"]
+
+[ext_resource type="PackedScene" uid="uid://snq0geweycfg" path="res://Assets/Circle/circle.tscn" id="1_3mqji"]
+[ext_resource type="Script" uid="uid://dsyq6f8j1t3yd" path="res://handle_input.gd" id="2_x4av3"]
+[ext_resource type="Script" uid="uid://ba047ws1kpfro" path="res://line_2d.gd" id="3_rpqi1"]
+[ext_resource type="Shader" uid="uid://cxdhiflwnhi5o" path="res://background.gdshader" id="4_uxrcv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxrcv"]
+shader = ExtResource("4_uxrcv")
+shader_parameter/bottom_color = Color(0.52156866, 0.3254902, 0.58431375, 1)
+shader_parameter/top_color = Color(0.3647059, 0.2784314, 0.4627451, 1)
+shader_parameter/wave_amp = 0.0170000008075
+shader_parameter/wave_size = 1.2800000133
+shader_parameter/wave_time_mul = 0.58000002429012
+shader_parameter/total_phases = 8
+
+[sub_resource type="Environment" id="Environment_uxrcv"]
+background_mode = 3
+adjustment_enabled = true
+
+[node name="MainScene" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_uxrcv")
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+position = Vector2(-1, 151)
+default_color = Color(0.72418416, 0.19997057, 0.4154369, 1)
+script = ExtResource("3_rpqi1")
+wavelength = 645.0
+resolution = 200
+
+[node name="Circle" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(473, 423)
+
+[node name="Circle2" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(728, 111)
+
+[node name="Circle3" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(899, 100)
+
+[node name="Circle4" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(287, 81)
+
+[node name="Circle5" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(91, 428)
+
+[node name="Circle6" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(92, 85)
+
+[node name="Circle7" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(455, 77)
+
+[node name="Circle8" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(299, 248)
+
+[node name="Circle9" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(1032, 240)
+
+[node name="Circle10" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(842, 293)
+
+[node name="Circle11" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(650, 278)
+
+[node name="Circle12" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(445, 238)
+
+[node name="Circle13" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(136, 241)
+
+[node name="Circle14" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(272, 413)
+
+[node name="Circle15" parent="." instance=ExtResource("1_3mqji")]
+position = Vector2(660, 430)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_x4av3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uxrcv")

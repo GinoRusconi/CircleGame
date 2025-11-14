@@ -1,40 +1,47 @@
 [gd_scene load_steps=3 format=3 uid="uid://snq0geweycfg"]
 
 [ext_resource type="Script" uid="uid://cacwi3qloe1ej" path="res://Assets/Circle/circle.gd" id="1_5jcbc"]
-[ext_resource type="Texture2D" uid="uid://cg4y4re7tsn86" path="res://Assets/Circle/Circle.png" id="2_k5mxj"]
+[ext_resource type="Texture2D" uid="uid://dj3jgqf8608v2" path="res://Assets/Circle/circe-pink-dark.png" id="2_5jcbc"]
 
 [node name="Circle" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_5jcbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_k5mxj")
+texture = ExtResource("2_5jcbc")
 
 [node name="PositionHeart" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="PositionHeart"]
-position = Vector2(30, 0)
+position = Vector2(128, 0)
 
 [node name="Marker2D2" type="Marker2D" parent="PositionHeart"]
-position = Vector2(18, 0)
+position = Vector2(90, 0)
 
 [node name="Marker2D3" type="Marker2D" parent="PositionHeart"]
-position = Vector2(-20, 0)
+position = Vector2(-90, 0)
 
 [node name="Marker2D4" type="Marker2D" parent="PositionHeart"]
-position = Vector2(-31, 0)
+position = Vector2(-128, 0)
 
 [node name="Center" type="Marker2D" parent="PositionHeart"]
 
 [node name="Marker2D5" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, -31)
+position = Vector2(0, -128)
 
 [node name="Marker2D6" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, -20)
+position = Vector2(0, -90)
 
 [node name="Marker2D7" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, 17)
+position = Vector2(0, 90)
 
 [node name="Marker2D8" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, 30)
+position = Vector2(0, 128)
 
 [node name="Line2D" type="Line2D" parent="."]
+width = 8.0
+default_color = Color(0.7254902, 0.2, 0.41568628, 1)
+
+[node name="Line2D2" type="Line2D" parent="."]
+width = 8.0
+default_color = Color(0.7254902, 0.2, 0.41568628, 1)
