@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqadi7kr61gvi"]
+
+[ext_resource type="Script" uid="uid://cd8e24wnqnk4e" path="res://Assets/handler_spawn.gd" id="1_0ultu"]
+[ext_resource type="AudioStream" uid="uid://dc5qak7g2tpph" path="res://Assets/Sound/slide_circle.wav" id="2_np1i6"]
+
+[node name="HandlerSpawn" type="Node2D"]
+script = ExtResource("1_0ultu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_np1i6")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

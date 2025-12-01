@@ -1,7 +1,22 @@
 class_name HandleInput extends Control
 
-var dir:Vector2
+@onready var menu: Control = $Menu
+@onready var hud: Control = $HUD
+@onready var score_label: Label = $HUD/Score
+@onready var sin_cos_label: Label = $HUD/SinCos
+@onready var main_scene: Node2D = $".."
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
+var score : int = 0
+var is_pause : bool = false
+var is_playing: bool = false
+
 var results: Array = []
+var dir:Vector2
+var handleSpawn : HandleSpawn 
+
+func _ready() -> void:
+	handleSpawn = %HandlerSpawn
 
 func _process(delta: float) -> void:
 	dir = Input.get_vector("left","right","down","up")
@@ -9,6 +24,9 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("sin"):sin_button()
 	if Input.is_action_just_pressed("cos"):cos_button()
+	
+	if Input.is_action_just_pressed("menu") && !is_pause && is_playing: open_menu()
+	elif Input.is_action_just_pressed("menu") && is_pause: close_menu()
 
 
 func cos_button()-> void:
@@ -20,6 +38,7 @@ func cos_button()-> void:
 		-0.7: EventBus.on_sin_cos_press.emit(Callable(self, "hit_check"), 2)
 		-1.0: EventBus.on_sin_cos_press.emit(Callable(self, "hit_check"), 3)
 		0.0:EventBus.on_sin_cos_press.emit(Callable(self, "hit_check"), 4)
+	sin_cos_label.text = "COS"
 	print(results)
 	pass
 
@@ -33,9 +52,45 @@ func sin_button():
 		-1.0: EventBus.on_sin_cos_press.emit(Callable(self, "hit_check"), 8)
 		0.0:EventBus.on_sin_cos_press.emit(Callable(self, "hit_check"), 4)
 	print(results)
+	sin_cos_label.text = "SIN"
 	pass
 
 func hit_check(success: bool):
 	results.append(success)
-	
-	pass
+	if results[0] == false:
+		main_scene.start_shake()
+		audio_stream_player_2d.play()
+		EventBus.on_game_over.emit()
+		is_playing = false
+		menu.visible = true
+		return
+	if results[0] == true:
+		score += 1
+		score_label.text = str(score)
+
+func close_menu():
+	is_pause = false
+
+	menu.visible = false
+	EventBus.on_pause.emit(true)
+	get_tree().paused = false
+
+func open_menu():
+	is_pause = true
+
+	menu.visible = true
+	get_tree().paused = true
+	EventBus.on_pause.emit(false)
+
+func _on_button_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_start_pressed() -> void:
+	handleSpawn.start_spawn()
+	is_playing = true
+	score = 0
+	menu.visible = false
+	EventBus.on_pause.emit(true)
+	get_tree().paused = false
+	pass # Replace with function body.

@@ -1,47 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://snq0geweycfg"]
+[gd_scene load_steps=7 format=3 uid="uid://snq0geweycfg"]
 
 [ext_resource type="Script" uid="uid://cacwi3qloe1ej" path="res://Assets/Circle/circle.gd" id="1_5jcbc"]
-[ext_resource type="Texture2D" uid="uid://dj3jgqf8608v2" path="res://Assets/Circle/circe-pink-dark.png" id="2_5jcbc"]
+[ext_resource type="Texture2D" uid="uid://cuqle7gi8mhbb" path="res://Assets/Circle/circle-v1.png" id="2_f4xwl"]
+[ext_resource type="Shader" uid="uid://bfmp3mttqq6u4" path="res://Assets/Circle/circle_fov.gdshader" id="2_k5mxj"]
+[ext_resource type="Texture2D" uid="uid://c2rq04unb8c6d" path="res://Assets/Circle/radio-circulo.png" id="4_gpjxd"]
+[ext_resource type="AudioStream" uid="uid://dnt0m30csx3pr" path="res://Assets/Sound/hit_heart.wav" id="5_gpjxd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f4xwl"]
+shader = ExtResource("2_k5mxj")
+shader_parameter/speed = 1.0
+shader_parameter/cone_width = -2.5
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 2.0
 
 [node name="Circle" type="Node2D"]
-scale = Vector2(0.5, 0.5)
+modulate = Color(0.88715225, 0.58341646, 0.6530071, 1)
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_5jcbc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_5jcbc")
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_f4xwl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f4xwl")
+texture = ExtResource("4_gpjxd")
 
 [node name="PositionHeart" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="PositionHeart"]
-position = Vector2(128, 0)
+position = Vector2(112, 0)
 
 [node name="Marker2D2" type="Marker2D" parent="PositionHeart"]
-position = Vector2(90, 0)
+position = Vector2(79, 0)
 
 [node name="Marker2D3" type="Marker2D" parent="PositionHeart"]
-position = Vector2(-90, 0)
+position = Vector2(-79, 0)
 
 [node name="Marker2D4" type="Marker2D" parent="PositionHeart"]
-position = Vector2(-128, 0)
+position = Vector2(-114, 0)
 
 [node name="Center" type="Marker2D" parent="PositionHeart"]
 
 [node name="Marker2D5" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, -128)
+position = Vector2(0, -114)
 
 [node name="Marker2D6" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, -90)
+position = Vector2(0, -79)
 
 [node name="Marker2D7" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, 90)
+position = Vector2(0, 79)
 
 [node name="Marker2D8" type="Marker2D" parent="PositionHeart"]
-position = Vector2(0, 128)
+position = Vector2(0, 114)
 
 [node name="Line2D" type="Line2D" parent="."]
-width = 8.0
-default_color = Color(0.7254902, 0.2, 0.41568628, 1)
+width = 4.0
+default_color = Color(0.46623838, 0.10251073, 0.25540686, 1)
 
 [node name="Line2D2" type="Line2D" parent="."]
-width = 8.0
+width = 4.0
 default_color = Color(0.7254902, 0.2, 0.41568628, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_gpjxd")

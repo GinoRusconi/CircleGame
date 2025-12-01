@@ -1,89 +1,244 @@
-[gd_scene load_steps=7 format=3 uid="uid://d12k1kwiwlrp6"]
+[gd_scene load_steps=18 format=3 uid="uid://d12k1kwiwlrp6"]
 
-[ext_resource type="PackedScene" uid="uid://snq0geweycfg" path="res://Assets/Circle/circle.tscn" id="1_3mqji"]
+[ext_resource type="PackedScene" uid="uid://dqadi7kr61gvi" path="res://Assets/handler_spawn.tscn" id="1_a814b"]
+[ext_resource type="Script" uid="uid://cb8w5jgmtxyhe" path="res://main_scene.gd" id="1_hbc2u"]
 [ext_resource type="Script" uid="uid://dsyq6f8j1t3yd" path="res://handle_input.gd" id="2_x4av3"]
 [ext_resource type="Script" uid="uid://ba047ws1kpfro" path="res://line_2d.gd" id="3_rpqi1"]
 [ext_resource type="Shader" uid="uid://cxdhiflwnhi5o" path="res://background.gdshader" id="4_uxrcv"]
+[ext_resource type="Texture2D" uid="uid://c2vr4o1km1nfu" path="res://Assets/Circle/PastelUIFree.png" id="5_rf2cd"]
+[ext_resource type="FontFile" uid="uid://o1h4f4kn1ajf" path="res://Assets/Fonts/BoldPixelsFont.ttf" id="6_5crlr"]
+[ext_resource type="Texture2D" uid="uid://0pxu6k0d0fkw" path="res://mouse-png-4.png" id="7_torvr"]
+[ext_resource type="AudioStream" uid="uid://diqdbrjq7csht" path="res://Assets/Sound/wrong.wav" id="8_torvr"]
+[ext_resource type="AudioStream" uid="uid://65y462bn0nm5" path="res://Assets/Sound/music.wav" id="10_8xkvn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxrcv"]
 shader = ExtResource("4_uxrcv")
-shader_parameter/bottom_color = Color(0.52156866, 0.3254902, 0.58431375, 1)
-shader_parameter/top_color = Color(0.3647059, 0.2784314, 0.4627451, 1)
-shader_parameter/wave_amp = 0.0170000008075
-shader_parameter/wave_size = 1.2800000133
-shader_parameter/wave_time_mul = 0.58000002429012
-shader_parameter/total_phases = 8
+shader_parameter/bottom_color = Color(0.7294118, 0.5686275, 0.5686275, 1)
+shader_parameter/top_color = Color(0.9647059, 0.8627451, 0.87058824, 1)
+shader_parameter/wave_amp = 0.0490000023275
+shader_parameter/wave_size = 1.4990000237025
+shader_parameter/wave_time_mul = 0.47000001906512
+shader_parameter/total_phases = 10
 
-[sub_resource type="Environment" id="Environment_uxrcv"]
-background_mode = 3
-adjustment_enabled = true
+[sub_resource type="AtlasTexture" id="AtlasTexture_a814b"]
+atlas = ExtResource("5_rf2cd")
+region = Rect2(111, 9, 57, 81)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a814b"]
+font = ExtResource("6_5crlr")
+font_size = 24
+font_color = Color(0.21176471, 0.23921569, 0.2901961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5crlr"]
+font = ExtResource("6_5crlr")
+font_size = 40
+font_color = Color(0.9529412, 0.8352941, 0.84705883, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbc2u"]
+font = ExtResource("6_5crlr")
+font_size = 200
+font_color = Color(1, 1, 1, 0.45882353)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5crlr"]
+atlas = ExtResource("5_rf2cd")
+region = Rect2(182, 176, 54, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbc2u"]
+atlas = ExtResource("5_rf2cd")
+region = Rect2(183, 208, 52, 15)
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_hbc2u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_uxrcv")
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
-position = Vector2(-1, 151)
-default_color = Color(0.72418416, 0.19997057, 0.4154369, 1)
-script = ExtResource("3_rpqi1")
-wavelength = 645.0
-resolution = 200
-
-[node name="Circle" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(473, 423)
-
-[node name="Circle2" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(728, 111)
-
-[node name="Circle3" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(899, 100)
-
-[node name="Circle4" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(287, 81)
-
-[node name="Circle5" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(91, 428)
-
-[node name="Circle6" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(92, 85)
-
-[node name="Circle7" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(455, 77)
-
-[node name="Circle8" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(299, 248)
-
-[node name="Circle9" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(1032, 240)
-
-[node name="Circle10" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(842, 293)
-
-[node name="Circle11" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(650, 278)
-
-[node name="Circle12" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(445, 238)
-
-[node name="Circle13" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(136, 241)
-
-[node name="Circle14" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(272, 413)
-
-[node name="Circle15" parent="." instance=ExtResource("1_3mqji")]
-position = Vector2(660, 430)
-
 [node name="Control" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_x4av3")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_uxrcv")
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 380.0
+offset_bottom = 719.0
+texture = SubResource("AtlasTexture_a814b")
+expand_mode = 1
+
+[node name="HUD" type="Control" parent="Control"]
+process_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="Control/HUD"]
+position = Vector2(76, 622)
+width = 3.0
+default_color = Color(0.7294118, 0.5686275, 0.5686275, 1)
+script = ExtResource("3_rpqi1")
+amplitude = 10.0
+wavelength = 50.0
+
+[node name="Label" type="Label" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 612.0
+offset_right = 116.0
+offset_bottom = 636.0
+text = "SIN"
+label_settings = SubResource("LabelSettings_a814b")
+
+[node name="Label3" type="Label" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 541.0
+offset_right = 233.0
+offset_bottom = 565.0
+text = "W A S D"
+label_settings = SubResource("LabelSettings_a814b")
+
+[node name="Label4" type="Label" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 570.0
+offset_right = 273.0
+offset_bottom = 594.0
+text = "+"
+label_settings = SubResource("LabelSettings_a814b")
+
+[node name="Label5" type="Label" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 610.0
+offset_right = 265.0
+offset_bottom = 634.0
+text = "OR"
+label_settings = SubResource("LabelSettings_a814b")
+
+[node name="TextureRect2" type="TextureRect" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 581.0
+offset_right = 610.0
+offset_bottom = 1093.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_torvr")
+
+[node name="Line2D2" type="Line2D" parent="Control/HUD"]
+position = Vector2(257, 623)
+width = 3.0
+default_color = Color(0.65882355, 0.4862745, 0.4862745, 1)
+script = ExtResource("3_rpqi1")
+amplitude = 10.0
+wavelength = 50.0
+
+[node name="Label2" type="Label" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 613.0
+offset_right = 307.0
+offset_bottom = 637.0
+text = "COS"
+label_settings = SubResource("LabelSettings_a814b")
+
+[node name="TextureRect3" type="TextureRect" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 582.0
+offset_right = 722.0
+offset_bottom = 1094.0
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_torvr")
+flip_h = true
+
+[node name="Score" type="Label" parent="Control/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 90.0
+offset_top = 34.0
+offset_right = 250.0
+offset_bottom = 73.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_5crlr")
+horizontal_alignment = 1
+
+[node name="SinCos" type="Label" parent="Control/HUD"]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 212.0
+offset_right = 996.0
+offset_bottom = 485.0
+text = "SIN"
+label_settings = SubResource("LabelSettings_hbc2u")
+
+[node name="Menu" type="Control" parent="Control"]
+process_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control/Menu"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 195.0
+offset_right = 160.0
+offset_bottom = 218.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("6_5crlr")
+icon = SubResource("AtlasTexture_5crlr")
+flat = true
+
+[node name="Button2" type="Button" parent="Control/Menu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 277.0
+offset_right = 160.0
+offset_bottom = 308.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("6_5crlr")
+icon = SubResource("AtlasTexture_hbc2u")
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control"]
+stream = ExtResource("8_torvr")
+
+[node name="HandlerSpawn" parent="." node_paths=PackedStringArray("position_spawn") instance=ExtResource("1_a814b")]
+unique_name_in_owner = true
+position_spawn = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4"), NodePath("Marker2D5"), NodePath("Marker2D6"), NodePath("Marker2D7")]
+
+[node name="Marker2D" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(467, -102)
+
+[node name="Marker2D2" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(595, -98)
+
+[node name="Marker2D3" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(713, -98)
+
+[node name="Marker2D4" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(846, -92)
+
+[node name="Marker2D5" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(968, -94)
+
+[node name="Marker2D6" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(1090, -90)
+
+[node name="Marker2D7" type="Marker2D" parent="HandlerSpawn"]
+position = Vector2(1212, -93)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_8xkvn")
+volume_db = -17.0
+autoplay = true
+
+[connection signal="pressed" from="Control/Menu/Button" to="Control" method="_on_start_pressed"]
+[connection signal="pressed" from="Control/Menu/Button2" to="Control" method="_on_button_pressed"]
