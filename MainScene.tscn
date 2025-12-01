@@ -197,6 +197,7 @@ icon = SubResource("AtlasTexture_5crlr")
 flat = true
 
 [node name="Button2" type="Button" parent="Control/Menu"]
+visible = false
 layout_mode = 0
 offset_left = 100.0
 offset_top = 277.0

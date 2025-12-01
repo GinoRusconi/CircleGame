@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 		
 	self.position += Vector2.DOWN * 60 * delta
 	
-	var h = get_viewport_rect().size.y + 100
+	var h = get_viewport_rect().size.y + 50
 	if global_position.y > h && !is_destroy:
 		EventBus.on_game_over.emit()
 
