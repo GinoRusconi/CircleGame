@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d12k1kwiwlrp6"]
+[gd_scene load_steps=20 format=3 uid="uid://d12k1kwiwlrp6"]
 
 [ext_resource type="PackedScene" uid="uid://dqadi7kr61gvi" path="res://Assets/handler_spawn.tscn" id="1_a814b"]
 [ext_resource type="Script" uid="uid://cb8w5jgmtxyhe" path="res://main_scene.gd" id="1_hbc2u"]
@@ -46,6 +46,14 @@ region = Rect2(182, 176, 54, 15)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hbc2u"]
 atlas = ExtResource("5_rf2cd")
 region = Rect2(183, 208, 52, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xkvn"]
+atlas = ExtResource("5_rf2cd")
+region = Rect2(183.01144, 223.91745, 52.097626, 15.1367035)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p5x2j"]
+font = ExtResource("6_5crlr")
+font_size = 11
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_hbc2u")
@@ -197,16 +205,34 @@ icon = SubResource("AtlasTexture_5crlr")
 flat = true
 
 [node name="Button2" type="Button" parent="Control/Menu"]
-visible = false
 layout_mode = 0
-offset_left = 100.0
-offset_top = 277.0
+offset_left = 100.00001
+offset_top = 374.0
 offset_right = 160.0
-offset_bottom = 308.0
+offset_bottom = 405.0
 scale = Vector2(3, 3)
 theme_override_fonts/font = ExtResource("6_5crlr")
 icon = SubResource("AtlasTexture_hbc2u")
 flat = true
+
+[node name="TutorialButton" type="Button" parent="Control/Menu"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 289.0
+offset_right = 162.0
+offset_bottom = 312.0
+scale = Vector2(3, 3)
+icon = SubResource("AtlasTexture_8xkvn")
+flat = true
+
+[node name="Label" type="Label" parent="Control/Menu/TutorialButton"]
+layout_mode = 0
+offset_left = 5.666667
+offset_top = 4.666667
+offset_right = 54.666668
+offset_bottom = 27.666668
+text = "TUTORIAL"
+label_settings = SubResource("LabelSettings_p5x2j")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control"]
 stream = ExtResource("8_torvr")
@@ -243,3 +269,4 @@ autoplay = true
 
 [connection signal="pressed" from="Control/Menu/Button" to="Control" method="_on_start_pressed"]
 [connection signal="pressed" from="Control/Menu/Button2" to="Control" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Menu/TutorialButton" to="Control" method="_on_tutorial_pressed"]

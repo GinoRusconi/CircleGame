@@ -6,4 +6,6 @@ extends Node2D
 func destroy():
 	destroy_particle.emitting = true
 	sprite_2d.texture = null
-	
+	var tween = get_tree().create_tween()
+	await tween.tween_interval(0.6).finished
+	queue_free()

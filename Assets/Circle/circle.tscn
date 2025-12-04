@@ -29,7 +29,7 @@ texture = ExtResource("4_gpjxd")
 [node name="PositionHeart" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="PositionHeart"]
-position = Vector2(112, 0)
+position = Vector2(112, 2.861023e-06)
 
 [node name="Marker2D2" type="Marker2D" parent="PositionHeart"]
 position = Vector2(79, 0)

@@ -6,10 +6,14 @@ class_name HandleInput extends Control
 @onready var sin_cos_label: Label = $HUD/SinCos
 @onready var main_scene: Node2D = $".."
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+const CIRCLE = preload("uid://snq0geweycfg")
+const TUTORIAL = preload("uid://dv18twys0ukvv")
+var tutorial_instance
 
 var score : int = 0
 var is_pause : bool = false
 var is_playing: bool = false
+var is_tutorial : bool = false
 
 var results: Array = []
 var dir:Vector2
@@ -25,8 +29,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("sin"):sin_button()
 	if Input.is_action_just_pressed("cos"):cos_button()
 	
-	if Input.is_action_just_pressed("menu") && !is_pause && is_playing: open_menu()
-	elif Input.is_action_just_pressed("menu") && is_pause: close_menu()
+	#if Input.is_action_just_pressed("menu") && !is_pause && is_playing: open_menu()
+	#elif Input.is_action_just_pressed("menu") && is_pause: close_menu()
 
 
 func cos_button()-> void:
@@ -93,4 +97,16 @@ func _on_start_pressed() -> void:
 	menu.visible = false
 	EventBus.on_pause.emit(true)
 	get_tree().paused = false
+	if is_tutorial:
+		_on_tutorial_pressed()
 	pass # Replace with function body.
+
+
+func _on_tutorial_pressed() -> void:
+	if not is_tutorial:
+		tutorial_instance = TUTORIAL.instantiate()
+		add_child(tutorial_instance)
+		is_tutorial = true
+	else:
+		tutorial_instance.queue_free()
+		is_tutorial = false
